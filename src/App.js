@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import Login from './components/layout/Login';
 import './App.css';
 
 import 'materialize-css/dist/css/materialize.min.css';
@@ -9,7 +10,11 @@ const App = () => {
     //Initialize materialize js
     M.AutoInit();
   });
-  return <div>My App</div>;
+  return (
+    <Fragment>
+      <Login />
+    </Fragment>
+  );
 };
 
 export default App;
