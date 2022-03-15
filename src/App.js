@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect } from 'react';
 import Login from './components/layout/Login';
 import './App.css';
+import { Provider } from 'react-redux';
+import store from './store';
 
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
@@ -11,9 +13,11 @@ const App = () => {
     M.AutoInit();
   });
   return (
-    <Fragment>
-      <Login />
-    </Fragment>
+    <Provider store={store}>
+      <Fragment>
+        <Login />
+      </Fragment>
+    </Provider>
   );
 };
 
