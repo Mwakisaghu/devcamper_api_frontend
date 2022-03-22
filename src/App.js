@@ -1,4 +1,5 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/layout/Login';
 import './App.css';
 import { Provider } from 'react-redux';
@@ -14,9 +15,11 @@ const App = () => {
   });
   return (
     <Provider store={store}>
-      <Fragment>
-        <Login />
-      </Fragment>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
     </Provider>
   );
 };
