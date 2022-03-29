@@ -2,6 +2,8 @@ import {
   GET_LOGGED_USER,
   LOGIN_USER_FAILURE,
   LOGIN_USER_SUCCESS,
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_FAILURE,
   LOGOUT_USER,
 } from '../../actions/types';
 
@@ -26,6 +28,17 @@ export default (state = initialState, action) => {
       };
     case LOGIN_USER_FAILURE:
       return {};
+    case REGISTER_USER_SUCCESS:
+      return {
+        ...state,
+        token: action.payload,
+      };
+    case REGISTER_USER_FAILURE:
+      console.error(action.payload);
+      return {
+        ...state,
+        error: action.payload,
+      };
     case LOGOUT_USER:
       return {};
     default:
