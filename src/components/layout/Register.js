@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { registerUser } from '../../actions/userRegisterAction';
+import PropTypes from 'prop-types';
 import 'antd/dist/antd.css';
 import { Form, Input, Select, Button } from 'antd';
 const { Option } = Select;
@@ -34,11 +37,12 @@ const tailFormItemLayout = {
   },
 };
 
-const Register = () => {
+const Register = ({ user, registerUser }) => {
+  console.log(user);
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+    registerUser(values);
   };
 
   return (
@@ -65,7 +69,7 @@ const Register = () => {
         scrollToFirstError
       >
         <Form.Item
-          name={['user', 'name']}
+          name={['name']}
           label="Name"
           rules={[
             {
@@ -159,4 +163,13 @@ const Register = () => {
   );
 };
 
-export default Register;
+Register.propTypes = {
+  user: PropTypes.object.isRequired,
+  registerUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps, { registerUser })(Register);
