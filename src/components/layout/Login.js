@@ -11,7 +11,7 @@ const Login = ({ user, loginUser }) => {
 
   useEffect(() => {
     if (user.token !== null) {
-      return navigate('/');
+      return navigate('/Home');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.token]);
