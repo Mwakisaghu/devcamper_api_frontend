@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../../actions/userRegisterAction';
 import PropTypes from 'prop-types';
 import 'antd/dist/antd.css';
@@ -40,6 +41,15 @@ const tailFormItemLayout = {
 const Register = ({ user, registerUser }) => {
   console.log(user);
   const [form] = Form.useForm();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user.token !== null) {
+      return navigate('/');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user.token]);
 
   const onFinish = (values) => {
     registerUser(values);
