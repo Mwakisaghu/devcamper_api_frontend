@@ -1,4 +1,5 @@
 import React from 'react';
+import Info from '../layout/Info';
 import 'antd/dist/antd.css';
 import { Layout, Breadcrumb } from 'antd';
 import { Link } from 'react-router-dom';
@@ -26,7 +27,7 @@ const Home = () => {
             <Breadcrumb.Item>Courses</Breadcrumb.Item>
             <Breadcrumb.Item>Reviews</Breadcrumb.Item>
           </Breadcrumb>
-          <div className="site-layout-content">Content</div>
+          <Info />
         </Content>
         <Footer style={{ textAlign: 'center' }}>
           Devcamper_api_frontend ©2018 Created by Harrison
