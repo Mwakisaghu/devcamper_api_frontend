@@ -440,3 +440,35 @@ table th {
     justify-content: center;
   }
 }
+
+.site-layout-content {
+  min-height: 100vh;
+  padding: 24px;
+  background: #fff;
+}
+.logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+.ant-row-rtl .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
+}
+[data-theme='dark'] .site-layout-content {
+  background: #141414;
+}
+
+a:not(:last-of-type) {
+  margin-right: 10px;
+}
+
+.gutter-box {
+  padding: 8px 0;
+  background: #00a0e9;
+}
+[data-theme="dark"] .gutter-box {
+  background: #028ac8;
+}
