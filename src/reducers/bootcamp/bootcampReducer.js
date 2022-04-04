@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
     case GET__BOOTCAMPS:
       return {
         ...state,
-        bootcamp: action.payload.bootcamp,
+        bootcamp: action.payload,
       };
     default:
       return state;
