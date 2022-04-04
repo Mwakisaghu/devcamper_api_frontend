@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getBootcamps } from '../../actions/bootcampActions';
 
 const Bootcamp = () => {
-  return <div>bootcamp</div>;
+  return <div></div>;
 };
 
 Bootcamp.propTypes = {
@@ -15,4 +16,4 @@ const mapStateToProps = (state) => ({
   bootcamp: state.bootcamp,
 });
 
-export default connect(mapStateToProps)(Bootcamp);
+export default connect(mapStateToProps, { getBootcamps })(Bootcamp);
