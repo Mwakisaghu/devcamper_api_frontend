@@ -1,7 +1,7 @@
 import { GET__BOOTCAMPS } from '../../actions/types';
 
 const initialState = {
-  bootcamp: [],
+  bootcamps: [],
   error: null,
 };
 
@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
     case GET__BOOTCAMPS:
       return {
         ...state,
-        bootcamp: action.payload,
+        bootcamps: action.payload,
       };
     default:
       return state;
