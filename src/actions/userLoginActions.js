@@ -39,11 +39,10 @@ export const loginUser = (user) => async (dispatch) => {
       type: LOGIN_USER_SUCCESS,
       payload: data,
     });
-    await res(() => {});
   } catch (err) {
     dispatch({
       type: LOGIN_USER_FAILURE,
-      payload: err.response.data,
+      payload: err.response,
     });
   }
 };
