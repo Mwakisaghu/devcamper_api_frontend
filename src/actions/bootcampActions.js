@@ -2,22 +2,16 @@ import { BOOTCAMPS_ERROR, GET__BOOTCAMPS } from '../actions/types';
 import axios from 'axios';
 
 //Get all bootcamps
-export const getBootcamps = (bootcamp) => async (dispatch) => {
+export const getBootcamps = (token) => async (dispatch) => {
   try {
     const res = await axios.get('/api/v1/bootcamps', {
-      method: 'GET',
-      body: JSON.stringify(bootcamp),
-      headers: {
-        'Content-type': 'application/json',
-      },
+      headers: { Authorization: `Bearer ${token}` },
     });
-    const data = await res.json();
 
     dispatch({
       type: GET__BOOTCAMPS,
-      payload: data,
+      payload: res.data,
     });
-    await res(() => {});
   } catch (err) {
     dispatch({
       type: BOOTCAMPS_ERROR,
