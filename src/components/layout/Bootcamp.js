@@ -1,12 +1,23 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getBootcamps } from '../../actions/bootcampActions';
 
 import 'antd/dist/antd.css';
+import { Card } from 'antd';
 
 const Bootcamp = ({ token, bootcamps, getBootcampsAction }) => {
   console.log({ bootcamps, token });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token === null) {
+      return navigate('/login');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
 
   useEffect(() => {
     if (token !== null) {
@@ -15,26 +26,34 @@ const Bootcamp = ({ token, bootcamps, getBootcampsAction }) => {
     /* eslint-disable */
   }, [token]);
 
-  const data = [
-    {
-      _id: '5d713995b721c3bb38c1f5d0',
-      user: '5d7a514b5d2c12c7449be045',
-      name: 'Devworks Bootcamp',
-      description:
-        'Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer',
-      website: 'https://devworks.com',
-      phone: '(111) 111-1111',
-      email: 'enroll@devworks.com',
-      address: '233 Bay State Rd Boston MA 02215',
-      careers: ['Web Development', 'UI/UX', 'Business'],
-      housing: true,
-      jobAssistance: true,
-      jobGuarantee: false,
-      acceptGi: true,
-    },
-  ];
+  const { Meta } = Card;
 
-  return <div></div>;
+  const { data } = bootcamps;
+  console.log({ data, bootcamps });
+
+  const renderData = data?.map((bootcamp) => (
+    <Card
+      className="gutter-row"
+      key={bootcamp.id}
+      title={bootcamp.name}
+      style={{ marginTop: 16 }}
+    >
+      <p>
+        <li key={bootcamp.id}>AvCost: ${bootcamp.averageCost}</li>
+        <li key={bootcamp.id}>Description: {bootcamp.description}</li>
+        <li key={bootcamp.id}>Careers: {bootcamp.careers}</li>
+      </p>
+    </Card>
+  ));
+  console.log(renderData);
+
+  return (
+    <div className="site-card-border-less-wrapper">
+      <Card>
+        <>{renderData && <>{renderData}</>}</>
+      </Card>
+    </div>
+  );
 };
 
 Bootcamp.propTypes = {
