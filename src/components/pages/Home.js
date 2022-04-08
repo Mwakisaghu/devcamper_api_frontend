@@ -26,6 +26,15 @@ const Home = () => {
             <Breadcrumb.Item>Bootcamps</Breadcrumb.Item>
             <Breadcrumb.Item>Courses</Breadcrumb.Item>
             <Breadcrumb.Item>Reviews</Breadcrumb.Item>
+            <a
+              href="!#"
+              className="btn-floating btn-large waves-effect waves-light red btn-small"
+              style={{ float: 'right' }}
+            >
+              <i class="material-icons" title="create bootcamp">
+                add
+              </i>
+            </a>
           </Breadcrumb>
           <Info />
         </Content>
