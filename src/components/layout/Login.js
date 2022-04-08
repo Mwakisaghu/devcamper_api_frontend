@@ -35,7 +35,9 @@ const Login = ({ user, loginUser }) => {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          loginUser(values);
+          if (user.token === null) {
+            loginUser(values);
+          }
         }}
       >
         {({ isSubmitting }) => (
