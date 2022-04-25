@@ -3,6 +3,7 @@ import Info from '../layout/Info';
 import 'antd/dist/antd.css';
 import { Layout, Breadcrumb } from 'antd';
 import { Link } from 'react-router-dom';
+import AddBtn from '../layout/AddBtn';
 
 const { Header, Content, Footer } = Layout;
 
@@ -26,15 +27,7 @@ const Home = () => {
             <Breadcrumb.Item>Bootcamps</Breadcrumb.Item>
             <Breadcrumb.Item>Courses</Breadcrumb.Item>
             <Breadcrumb.Item>Reviews</Breadcrumb.Item>
-            <a
-              href="!#"
-              className="btn-floating btn-large waves-effect waves-light red btn-small"
-              style={{ float: 'right' }}
-            >
-              <i class="material-icons" title="create bootcamp">
-                add
-              </i>
-            </a>
+            <AddBtn />
           </Breadcrumb>
           <Info />
         </Content>
