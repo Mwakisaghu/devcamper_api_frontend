@@ -4,6 +4,7 @@ import Login from './components/layout/Login';
 import Register from './components/layout/Register';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
+import CreateBootcampForm from './components/bootcamps/CreateBootcampForm';
 import './App.css';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -24,6 +25,7 @@ const App = () => {
           <Route exact path="/about" element={<About />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
+          <Route exact path="/create" element={<CreateBootcampForm />} />
         </Routes>
       </BrowserRouter>
     </Provider>
