@@ -1,11 +1,11 @@
 import React from 'react';
 
-const AddBtn = () => {
+const CreateBtn = () => {
   return (
     <div>
       <a
-        href="add-bootcamp-modal"
-        className="btn-floating btn-large waves-effect waves-light red btn-small modal-trigger"
+        href="/create"
+        className="btn-floating btn-large waves-effect waves-light red btn-small modal-trigger "
         style={{ float: 'right' }}
       >
         <i class="material-icons" title="create bootcamp">
@@ -16,4 +16,4 @@ const AddBtn = () => {
   );
 };
 
-export default AddBtn;
+export default CreateBtn;
