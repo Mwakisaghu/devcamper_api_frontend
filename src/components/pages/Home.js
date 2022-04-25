@@ -3,8 +3,7 @@ import Info from '../layout/Info';
 import 'antd/dist/antd.css';
 import { Layout, Breadcrumb } from 'antd';
 import { Link } from 'react-router-dom';
-import AddBtn from '../layout/AddBtn';
-
+import CreateBtn from '../layout/CreateBtn';
 const { Header, Content, Footer } = Layout;
 
 const Home = () => {
@@ -27,7 +26,8 @@ const Home = () => {
             <Breadcrumb.Item>Bootcamps</Breadcrumb.Item>
             <Breadcrumb.Item>Courses</Breadcrumb.Item>
             <Breadcrumb.Item>Reviews</Breadcrumb.Item>
-            <AddBtn />
+
+            <CreateBtn />
           </Breadcrumb>
           <Info />
         </Content>
