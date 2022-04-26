@@ -38,14 +38,6 @@ const phone = (value) => {
   return error;
 };
 
-const website = (value) => {
-  let error;
-  if (!value) {
-    error = required;
-  }
-  return error;
-};
-
 const description = (value) => {
   let error;
   if (!value) {
@@ -120,7 +112,6 @@ const CreateBootcampForm = () => {
                   type="url"
                   placeholder="website"
                   name="website"
-                  validate={website}
                 />
               </div>
 
@@ -132,9 +123,7 @@ const CreateBootcampForm = () => {
                   name="phone"
                   validate={phone}
                 />
-                {errors.mobilenumber &&
-                  touched.mobilenumber &&
-                  errorMessage(errors.mobilenumber)}
+                {errors.phone && touched.phone && errorMessage(errors.phone)}
               </div>
 
               <div className="form-group">
@@ -155,9 +144,9 @@ const CreateBootcampForm = () => {
                   placeholder="address"
                   name="address"
                 />
-                {errors.password &&
-                  touched.password &&
-                  errorMessage(errors.password)}
+                {errors.address &&
+                  touched.address &&
+                  errorMessage(errors.address)}
               </div>
 
               <div className="form-group">
