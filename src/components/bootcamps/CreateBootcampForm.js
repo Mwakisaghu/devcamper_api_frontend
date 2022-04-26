@@ -78,8 +78,9 @@ const CreateBootcampForm = () => {
         jobGuarantee: '',
         acceptGi: '',
       }}
-      onSubmit={(values) => {
+      onSubmit={(values, { resetForm }) => {
         console.log(values);
+        resetForm({ values: '' });
       }}
     >
       {({ errors, touched, isValidating }) => (
