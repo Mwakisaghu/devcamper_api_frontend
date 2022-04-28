@@ -1,4 +1,4 @@
-import { GET__BOOTCAMPS } from '../../actions/types';
+import { GET__BOOTCAMPS, CREATE_BOOTCAMP } from '../../actions/types';
 
 const initialState = {
   bootcamps: [],
@@ -12,6 +12,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         bootcamps: action.payload,
+      };
+    case CREATE_BOOTCAMP:
+      return {
+        ...state,
+        bootcamps: [...state.bootcamps, action.payload],
       };
     default:
       return state;
