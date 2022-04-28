@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { createBootcamp } from '../../actions/bootcampActions';
 import { Formik, Form, Field } from 'formik';
 
 // Messages
@@ -32,7 +35,7 @@ const email = (value) => {
 
 const phone = (value) => {
   let error;
-  if (value.length > 12) {
+  if (value.length > 20) {
     error = maxLength;
   }
   return error;
@@ -62,7 +65,14 @@ const housing = (value) => {
   return error;
 };
 
-const CreateBootcampForm = () => {
+const CreateBootcampForm = ({ user, token, createBootcamp }) => {
+  useEffect(() => {
+    if (token !== null) {
+      createBootcamp(token);
+    }
+    /* eslint-disable */
+  }, [token]);
+
   return (
     <Formik
       initialValues={{
@@ -80,7 +90,19 @@ const CreateBootcampForm = () => {
       }}
       onSubmit={(values, { resetForm }) => {
         console.log(values);
-        resetForm({ values: '' });
+
+        if (values === '') {
+          console.log('Please fill in all the fields');
+        } else {
+          const newBootcamp = {
+            values,
+            date: new Date(),
+          };
+          createBootcamp(newBootcamp);
+
+          //Clear form
+          resetForm({ values: '' });
+        }
       }}
     >
       {({ errors, touched, isValidating }) => (
@@ -230,4 +252,8 @@ const CreateBootcampForm = () => {
   );
 };
 
-export default CreateBootcampForm;
+CreateBootcampForm.propTypes = {
+  createBootcamp: PropTypes.func.isRequired,
+};
+
+export default connect(null, { createBootcamp })(CreateBootcampForm);
