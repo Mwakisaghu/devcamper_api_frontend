@@ -2,6 +2,7 @@ import {
   BOOTCAMPS_ERROR,
   GET__BOOTCAMPS,
   CREATE_BOOTCAMP,
+  DELETE_BOOTCAMP,
 } from '../actions/types';
 import axios from 'axios';
 
@@ -40,6 +41,30 @@ export const createBootcamp = (token, payload) => async (dispatch) => {
     dispatch({
       type: CREATE_BOOTCAMP,
       payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: BOOTCAMPS_ERROR,
+      payload: err.response.data,
+    });
+  }
+};
+
+//Delete Bootcamp
+export const deleteBootcamp = (token, id) => async (dispatch) => {
+  try {
+    await axios({
+      method: 'delete',
+      url: `/api/v1/bootcamps/${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-type': 'application/json',
+      },
+    });
+
+    dispatch({
+      type: DELETE_BOOTCAMP,
+      payload: id,
     });
   } catch (err) {
     dispatch({
