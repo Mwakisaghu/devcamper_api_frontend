@@ -1,17 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CreateBtn = () => {
   return (
     <div>
-      <a
-        href="/create"
+      <Link
+        to="/create"
         className="btn-floating btn-large waves-effect waves-light red btn-small modal-trigger "
         style={{ float: 'right' }}
       >
         <i class="material-icons" title="create bootcamp">
           add
         </i>
-      </a>
+      </Link>
     </div>
   );
 };
