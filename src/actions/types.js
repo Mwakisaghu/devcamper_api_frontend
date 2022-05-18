@@ -8,6 +8,8 @@ export const REGISTER_USER_FAILURE = 'REGISTER_USER_FAILURE';
 export const GET__BOOTCAMPS = 'GET_BOOTCAMPS';
 export const BOOTCAMPS_ERROR = 'BOOTCAMPS_ERROR';
 
+export const CREATE_BOOTCAMP = 'CREATE_BOOTCAMP';
+
 // //users
 // export const LOGIN_USER = 'LOGIN_USER';
 export const GET_LOGGED_USER = 'GET_LOGGED_USER';
