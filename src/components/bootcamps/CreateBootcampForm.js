@@ -1,78 +1,71 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createBootcamp } from '../../actions/bootcampActions';
 import { Formik, Form, Field } from 'formik';
 
 // Messages
-const required = 'This field is required';
-const maxLength = 'Your input exceed maximum length';
+// const required = 'This field is required';
+// const maxLength = 'Your input exceed maximum length';
 
 // Error Component
-const errorMessage = (error) => {
-  return <div className="invalid-feedback">{error}</div>;
-};
+// const errorMessage = (error) => {
+//   return <div className="invalid-feedback">{error}</div>;
+// };
 
-const name = (value) => {
-  let error;
-  if (!value) {
-    error = required;
-  } else if (value.length > 12) {
-    error = maxLength;
-  }
-  return error;
-};
+// const name = (value) => {
+//   let error;
+//   if (!value) {
+//     error = required;
+//   } else if (value.length > 12) {
+//     error = maxLength;
+//   }
+//   return error;
+// };
 
-const email = (value) => {
-  let error;
-  if (!value) {
-    error = required;
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    error = 'Invalid email address';
-  }
-  return error;
-};
+// const email = (value) => {
+//   let error;
+//   if (!value) {
+//     error = required;
+//   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+//     error = 'Invalid email address';
+//   }
+//   return error;
+// };
 
-const phone = (value) => {
-  let error;
-  if (value.length > 20) {
-    error = maxLength;
-  }
-  return error;
-};
+// const phone = (value) => {
+//   let error;
+//   if (value.length > 20) {
+//     error = maxLength;
+//   }
+//   return error;
+// };
 
-const description = (value) => {
-  let error;
-  if (!value) {
-    error = required;
-  }
-  return error;
-};
+// const description = (value) => {
+//   let error;
+//   if (!value) {
+//     error = required;
+//   }
+//   return error;
+// };
 
-const careers = (value) => {
-  let error;
-  if (!value) {
-    error = required;
-  }
-  return error;
-};
+// const careers = (value) => {
+//   let error;
+//   if (!value) {
+//     error = required;
+//   }
+//   return error;
+// };
 
-const housing = (value) => {
-  let error;
-  if (!value) {
-    error = required;
-  }
-  return error;
-};
+// const housing = (value) => {
+//   let error;
+//   if (!value) {
+//     error = required;
+//   }
+//   return error;
+// };
 
-const CreateBootcampForm = ({ user, token, createBootcamp }) => {
-  useEffect(() => {
-    if (token !== null) {
-      createBootcamp(token);
-    }
-    /* eslint-disable */
-  }, [token]);
-
+const CreateBootcampForm = ({ token, createBootcamp }) => {
   return (
     <Formik
       initialValues={{
@@ -82,23 +75,23 @@ const CreateBootcampForm = ({ user, token, createBootcamp }) => {
         phone: '',
         email: '',
         address: '',
-        careers: '',
-        housing: '',
-        jobAssistance: '',
-        jobGuarantee: '',
-        acceptGi: '',
+        // careers: '',
+        housing: false,
+        jobAssistance: false,
+        jobGuarantee: false,
+        acceptGi: false,
       }}
       onSubmit={(values, { resetForm }) => {
-        console.log(values);
+        console.log({ values, token });
 
         if (values === '') {
           console.log('Please fill in all the fields');
         } else {
           const newBootcamp = {
-            values,
+            ...values,
             date: new Date(),
           };
-          createBootcamp(newBootcamp);
+          createBootcamp(token, newBootcamp);
 
           //Clear form
           resetForm({ values: '' });
@@ -124,9 +117,9 @@ const CreateBootcampForm = ({ user, token, createBootcamp }) => {
                   type="text"
                   placeholder="name"
                   name="name"
-                  validate={name}
+                  // validate={name}
                 />
-                {errors.name && touched.name && errorMessage(errors.name)}
+                {/* {errors.name && touched.name && errorMessage(errors.name)} */}
               </div>
 
               <div className="form-group">
@@ -144,9 +137,9 @@ const CreateBootcampForm = ({ user, token, createBootcamp }) => {
                   type="tel"
                   placeholder="phone"
                   name="phone"
-                  validate={phone}
+                  // validate={phone}
                 />
-                {errors.phone && touched.phone && errorMessage(errors.phone)}
+                {/* {errors.phone && touched.phone && errorMessage(errors.phone)} */}
               </div>
 
               <div className="form-group">
@@ -155,9 +148,9 @@ const CreateBootcampForm = ({ user, token, createBootcamp }) => {
                   name="email"
                   className="form-control"
                   placeholder="email"
-                  validate={email}
+                  // validate={email}
                 />
-                {errors.email && touched.email && errorMessage(errors.email)}
+                {/* {errors.email && touched.email && errorMessage(errors.email)} */}
               </div>
 
               <div className="form-group">
@@ -167,38 +160,38 @@ const CreateBootcampForm = ({ user, token, createBootcamp }) => {
                   placeholder="address"
                   name="address"
                 />
-                {errors.address &&
+                {/* {errors.address &&
                   touched.address &&
-                  errorMessage(errors.address)}
+                  errorMessage(errors.address)} */}
               </div>
 
-              <div className="form-group">
+              {/* <div className="form-group">
                 <Field
                   className="form-control"
                   type="text"
                   placeholder="careers"
                   name="careers"
-                  validate={careers}
-                />
-                {errors.careers &&
+                  // validate={careers}
+                /> */}
+              {/* {errors.careers &&
                   touched.careers &&
-                  errorMessage(errors.careers)}
-              </div>
+                  errorMessage(errors.careers)} */}
+              {/* </div>
 
               <div className="form-group">
                 <Field
                   className="form-control"
                   type="text"
                   placeholder="housing"
-                  name="housing"
-                  validate={housing}
-                />
-                {errors.housing &&
+                  name="housing" */}
+              {/* validate={housing} */}
+              {/* /> */}
+              {/* {errors.housing &&
                   touched.housing &&
-                  errorMessage(errors.housing)}
-              </div>
+                  errorMessage(errors.housing)} */}
+              {/* </div> */}
 
-              <div className="form-group">
+              {/* <div className="form-group">
                 <Field
                   className="form-control"
                   type="text"
@@ -223,16 +216,16 @@ const CreateBootcampForm = ({ user, token, createBootcamp }) => {
                   placeholder="acceptGi"
                   name="acceptGi"
                 />
-              </div>
+              </div> */}
 
               <div className="form-group">
                 <Field
                   component="textarea"
                   className="form-control"
-                  type="description"
+                  type="text"
                   placeholder="description"
                   name="description"
-                  validate={description}
+                  // validate={description}
                 />
               </div>
 
@@ -253,7 +246,12 @@ const CreateBootcampForm = ({ user, token, createBootcamp }) => {
 };
 
 CreateBootcampForm.propTypes = {
+  token: PropTypes.object.isRequired,
   createBootcamp: PropTypes.func.isRequired,
 };
 
-export default connect(null, { createBootcamp })(CreateBootcampForm);
+const mapStateToProps = (state) => ({
+  token: state.user.token,
+});
+
+export default connect(mapStateToProps, { createBootcamp })(CreateBootcampForm);
