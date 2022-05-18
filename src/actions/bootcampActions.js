@@ -25,14 +25,16 @@ export const getBootcamps = (token) => async (dispatch) => {
 };
 
 //Create new Bootcamp
-export const createBootcamp = (token) => async (dispatch) => {
+export const createBootcamp = (token, payload) => async (dispatch) => {
   try {
-    console.log('I was here...');
-
-    const res = await axios.post('/api/v1/bootcamps', {
+    const res = await axios({
+      method: 'post',
+      url: '/api/v1/bootcamps',
       headers: {
         Authorization: `Bearer ${token}`,
+        'Content-type': 'application/json',
       },
+      data: payload,
     });
 
     dispatch({
