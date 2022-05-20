@@ -51,25 +51,9 @@ export const createBootcamp = (token, payload) => async (dispatch) => {
 };
 
 //Delete Bootcamp
-export const deleteBootcamp = (token, id) => async (dispatch) => {
-  try {
-    await axios({
-      method: 'delete',
-      url: `/api/v1/bootcamps/${id}`,
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-type': 'application/json',
-      },
-    });
-
-    dispatch({
-      type: DELETE_BOOTCAMP,
-      payload: id,
-    });
-  } catch (err) {
-    dispatch({
-      type: BOOTCAMPS_ERROR,
-      payload: err.response.data,
-    });
-  }
+export const deleteBootcamp = (_id) => {
+  return {
+    type: DELETE_BOOTCAMP,
+    payload: _id,
+  };
 };
