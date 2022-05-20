@@ -38,7 +38,7 @@ const Bootcamp = ({ token, bootcamps, getBootcampsAction }) => {
       key={bootcamp.id}
       title={bootcamp.name}
       style={{ marginTop: 16 }}
-      extra={<DeleteBtn />}
+      extra={<DeleteBtn _id={bootcamp.id} />}
     >
       <p>
         <li key={bootcamp.id}>AvCost: ${bootcamp.averageCost}</li>
