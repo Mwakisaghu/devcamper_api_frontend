@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Button, Popconfirm, message } from 'antd';
 import { connect, useDispatch } from 'react-redux';
 import { deleteBootcamp } from '../../actions/bootcampActions';
 import PropTypes from 'prop-types';
@@ -8,10 +8,10 @@ import axios from 'axios';
 const DeleteBtn = ({ deleteBootcampAction, token, _id }) => {
   const dispatch = useDispatch();
 
-  const onDelete = async (e) => {
+  //OnDelete
+  const confirm = async (e) => {
+    console.log(e);
     e.preventDefault();
-
-    console.log(token, _id);
 
     const res = await axios({
       method: 'delete',
@@ -22,21 +22,35 @@ const DeleteBtn = ({ deleteBootcampAction, token, _id }) => {
       },
     });
     console.log({ res });
+
     if (res.status === 200) {
       dispatch(deleteBootcamp(_id));
+      message.success('Bootcamp successfully deleted!');
     }
+  };
+
+  const cancel = (e) => {
+    console.log(e);
   };
 
   return (
     <div>
-      <Button size="small" onClick={(e) => onDelete(e)}>
-        <i
-          class="material-icons"
-          style={{ color: 'red', zIndex: 10 }}
-          title="delete"
+      <Button size="small">
+        <Popconfirm
+          title="Do you want to delete this bootcamp?"
+          onConfirm={confirm}
+          onCancel={cancel}
+          okText="Yes"
+          cancelText="No"
         >
-          delete
-        </i>
+          <i
+            class="material-icons"
+            style={{ color: 'red', zIndex: 10 }}
+            title="delete"
+          >
+            delete
+          </i>
+        </Popconfirm>
       </Button>
     </div>
   );
