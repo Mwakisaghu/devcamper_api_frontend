@@ -23,11 +23,18 @@ export default (state = initialState, action) => {
         bootcamps: [...state.bootcamps, action.payload],
       };
     case DELETE_BOOTCAMP:
+      console.log({ state });
+      const filteredBootcamps = state.bootcamps.data.filter(
+        (bootcamp) => bootcamp._id !== action.payload
+      );
+      console.log({
+        filteredBootcamps,
+        bootcamps: state.bootcamps,
+        payload: action.payload,
+      });
       return {
         ...state,
-        bootcamps: state.bootcamps.filter(
-          (bootcamp) => bootcamp.id !== action.payload
-        ),
+        bootcamps: { data: filteredBootcamps },
       };
     default:
       return state;
