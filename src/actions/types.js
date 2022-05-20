@@ -9,6 +9,7 @@ export const GET__BOOTCAMPS = 'GET_BOOTCAMPS';
 export const BOOTCAMPS_ERROR = 'BOOTCAMPS_ERROR';
 
 export const CREATE_BOOTCAMP = 'CREATE_BOOTCAMP';
+export const DELETE_BOOTCAMP = 'DELETE_BOOTCAMP';
 
 // //users
 // export const LOGIN_USER = 'LOGIN_USER';

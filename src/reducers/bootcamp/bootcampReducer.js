@@ -1,4 +1,8 @@
-import { GET__BOOTCAMPS, CREATE_BOOTCAMP } from '../../actions/types';
+import {
+  GET__BOOTCAMPS,
+  CREATE_BOOTCAMP,
+  DELETE_BOOTCAMP,
+} from '../../actions/types';
 
 const initialState = {
   bootcamps: [],
@@ -17,6 +21,20 @@ export default (state = initialState, action) => {
       return {
         ...state,
         bootcamps: [...state.bootcamps, action.payload],
+      };
+    case DELETE_BOOTCAMP:
+      console.log({ state });
+      const filteredBootcamps = state.bootcamps.data.filter(
+        (bootcamp) => bootcamp._id !== action.payload
+      );
+      console.log({
+        filteredBootcamps,
+        bootcamps: state.bootcamps,
+        payload: action.payload,
+      });
+      return {
+        ...state,
+        bootcamps: { data: filteredBootcamps },
       };
     default:
       return state;

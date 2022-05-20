@@ -2,6 +2,7 @@ import {
   BOOTCAMPS_ERROR,
   GET__BOOTCAMPS,
   CREATE_BOOTCAMP,
+  DELETE_BOOTCAMP,
 } from '../actions/types';
 import axios from 'axios';
 
@@ -47,4 +48,12 @@ export const createBootcamp = (token, payload) => async (dispatch) => {
       payload: err.response.data,
     });
   }
+};
+
+//Delete Bootcamp
+export const deleteBootcamp = (_id) => {
+  return {
+    type: DELETE_BOOTCAMP,
+    payload: _id,
+  };
 };

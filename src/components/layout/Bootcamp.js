@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getBootcamps } from '../../actions/bootcampActions';
+import DeleteBtn from '../layout/DeleteBtn';
 
 import 'antd/dist/antd.css';
 import { Card } from 'antd';
@@ -37,6 +38,7 @@ const Bootcamp = ({ token, bootcamps, getBootcampsAction }) => {
       key={bootcamp.id}
       title={bootcamp.name}
       style={{ marginTop: 16 }}
+      extra={<DeleteBtn _id={bootcamp.id} />}
     >
       <p>
         <li key={bootcamp.id}>AvCost: ${bootcamp.averageCost}</li>
